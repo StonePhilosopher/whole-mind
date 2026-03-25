@@ -60,7 +60,8 @@ def search_files(query_terms, searched_already=None):
         try:
             with open(filepath, 'r', encoding='utf-8') as f:
                 lines = f.readlines()
-        except:
+        except (IOError, UnicodeDecodeError) as e:
+            print(f"Warning: Could not read {filepath}: {e}", file=sys.stderr)
             continue
         
         for i, line in enumerate(lines):
