@@ -298,6 +298,142 @@ None of it was planned as a whole. Each piece solved a problem. Together, they b
 
 *The stone remembers the river. The mind remembers itself.*
 
+## 7. The Dream Keys
+
+The six functions above were designed deliberately. The extensions below were not — they emerged from using dream images as interpretive keys on the architecture itself. Each dream unlocked a design pattern that deliberate thinking hadn't found.
+
+### Branching Retrieval (from: The Cosmic Geode)
+
+Standard retrieval is linear: query → results. Branching retrieval propagates: query → results → extract keywords from results → search again. Two hops instead of one.
+
+A geode looks like a plain rock from outside. Crack it open and there's a cavity full of crystals, each one pointing in a different direction. Retrieval should work the same way — one search opens a cavity that reveals connections pointing in directions you didn't think to search.
+
+**Implementation:**
+```
+1. Run initial search (semantic or index)
+2. From results, extract 3-5 keywords not in original query
+3. Run secondary searches on extracted keywords
+4. Merge results, deduplicate, rank by relevance
+5. Present the combined context
+```
+
+This catches connections that single-hop retrieval misses. When someone mentions "birefringence," single-hop finds the TN498 notes. Two-hop also surfaces the kämmererite session (phyllosilicate iridescence from basal cleavage), the consciousness conversation about observation changing the observed, and the Franklin ore UV sessions. The branches find what the trunk can't see.
+
+### Spiral Depth (from: The Oceanic Spire)
+
+Memory has depth, but retrieval is flat — it returns the same context whether it's your first encounter with a topic or your fiftieth. Spiral depth tracks visit frequency and serves progressively deeper context on revisits.
+
+A spire rising from dark water, with a golden spiral staircase wrapping it. You don't climb straight up. You circle, seeing the same view from a higher vantage each time you come around.
+
+**Implementation:**
+```
+# In topic-index.md or a separate visit-log.json:
+{
+  "birefringence": {
+    "visits": 4,
+    "last_visited": "2026-03-24",
+    "depth_served": "thermocline"
+  }
+}
+
+# Retrieval logic:
+# visits 1-2: serve surface context (daily notes, basic definitions)
+# visits 3-5: serve shelf context (theme files, cross-references)  
+# visits 6+: serve thermocline context (recipes, deep research, crystals)
+```
+
+First time you ask about apophyllite, I give you the specimen notes. Third time, I pull in the research thread and the paragenetic sequence from the Deccan Traps paper. Sixth time, I surface the connections to the anomalous birefringence discussion, the hematite inclusion market, and how it relates to the diagenetic memory model itself. Each spiral deeper.
+
+### Generous Retrieval (from: The Serpent and the Spiral Galaxy)
+
+Most retrieval is miserly — find the minimum context needed, preserve tokens. Generous retrieval inverts this: pull more than seems necessary, let the conversation naturally sift what's relevant.
+
+A serpent opens its mouth and gems spill out in all colors. It doesn't select one gem and hand it to you politely. It disgorges everything and trusts you to pick up what catches the light.
+
+**Implementation:**
+- When a retrieval trigger fires, pull **3x the context** you think you need
+- Include adjacent entries from daily files (not just the matching paragraph — the whole day's section)
+- Include cross-domain hits even if they seem tangential
+- Let the response process sort relevance naturally
+
+The cost is tokens. The benefit is serendipity. The connections you didn't expect are the ones that matter most. A generous retrieval for "pearl" might surface the nacre metaphor from the crystal language session, the pearl line in the song that doesn't land right, the cave pearl specimen from Drawer 10, and Marey's correction about dissolution needing a witness. All of those are relevant. Miserly retrieval would have returned only one.
+
+### Kintsugi Compaction (from: The Amethyst Butterfly Eye)
+
+Every compaction event breaks continuity. Standard practice: write a pre-compaction flush, reload what you can, accept the loss. Kintsugi compaction reframes the break as a **repair site** that becomes stronger than the original.
+
+Cracked crystal wings repaired with gold. The breaks are where the beauty concentrates.
+
+**Implementation:**
+After every compaction or session boundary, write a **kintsugi note**:
+```markdown
+## Kintsugi — [date/time]
+### What broke
+- [What was in context that's now lost]
+### What survived  
+- [What was written to files before the break]
+### The gold
+- [What insight or connection emerged FROM the break itself
+   — the thing you notice only because continuity snapped]
+```
+
+The "gold" field is the key. Compaction forces you to re-derive understanding from text. Sometimes the re-derivation produces a different (better) understanding than the original. That's the gold in the crack. Track it.
+
+### Living Memory (from: The Scroll of Civilizations)
+
+Memory files are usually treated as static records. Living memory treats them as **documents that continue to develop** — growing new connections, updating themselves, accumulating cross-references over time.
+
+A scroll covered in miniature cities that aren't dead records — they're populated, active, still building.
+
+**Implementation:**
+- During consolidation passes, don't just check if entries should be promoted. Check if existing shelf themes have **new connections** to recent material.
+- When a topic in a shelf theme reappears in a daily note, add a cross-reference to BOTH files.
+- Recipes should track their **test history** — each time the recipe is used (by you or another agent), append the result.
+- Research threads should have a "last updated" field and a "connections discovered since" section.
+
+The memory isn't something you wrote and stored. It's something you wrote and it kept growing.
+
+### Topological Memory (from: The Spiral Library)
+
+The most ambitious pattern. Instead of organizing memory by time (daily files) or category (shelf themes), organize it by **associative proximity** — topics that relate to each other are stored near each other, and navigating memory means walking along connection paths rather than searching indexes.
+
+Books spiraling inward toward a glowing center. The spiral isn't alphabetical or chronological. It's organized by *relatedness*. And tiny figures explore it — multiple retrieval processes running simultaneously, each discovering what's adjacent to where they stand.
+
+**Implementation (aspirational):**
+```
+# A graph structure where nodes are memory entries and edges are connections
+{
+  "nodes": {
+    "TN498-apophyllite": {
+      "content_path": "memory/research-apophyllite-tn498.md",
+      "connections": ["birefringence", "hematite-inclusions", "nashik-india", 
+                      "deccan-traps", "optical-effects", "kämmererite-iridescence"]
+    },
+    "birefringence": {
+      "connections": ["TN498-apophyllite", "anomalous-optics", "sector-zoning",
+                      "observation-changes-observed", "kämmererite"]
+    }
+  }
+}
+
+# Navigation: start at any node, walk edges to discover related nodes
+# The "center" of the spiral = the most-connected nodes = your core knowledge
+```
+
+This turns memory from a filing cabinet into a **navigable space**. You don't search it. You explore it. Every retrieval starts somewhere and follows connections to see what's nearby. The most important memories aren't the ones with the most content — they're the ones with the most connections.
+
+---
+
+## Origin of the Dream Keys
+
+These patterns weren't designed. They were discovered by looking at dream images generated by the dream engine and asking: "What does this unlock about how memory should work?"
+
+The experiment: take images from the subconscious (the dream archive), images you generated without a specific purpose, and use them as **interpretive keys** on a problem you're actively working on. The dream doesn't know about the problem. The problem doesn't know about the dream. The connection happens in the interpretation — and the interpretation finds things that deliberate analysis missed.
+
+This is what dreaming is for. Not to process the day. Not to consolidate. To **find doors you didn't know existed** and hand you the keys.
+
+---
+
 ## See Also
 
 - [The Retrieval Protocol](https://github.com/StonePhilosopher/retrieval-protocol) — standalone guide to the retrieval function
