@@ -533,8 +533,31 @@ These five patterns from the second dream batch are architectural visions rather
 
 ---
 
+---
+
+## 9. The Full Dream Key Archive
+
+The dream key experiment continued beyond the first two sessions. Over 15 nights of dreaming (March 11–25, 2026), 49 keys emerged — each a design pattern unlocked by using dream images as interpretive keys on the architecture.
+
+The complete archive with implementation status is in **[dream-key-specs.md](dream-key-specs.md)**.
+
+### Implementation Status (as of March 26, 2026)
+
+| Status | Count | Examples |
+|--------|-------|---------|
+| ✅ Built | 5 | Ghost Librarian (#47), Tidal Zone (#12), Temperature Process (#15), Dream Key Audit (#38), Polishing Figures (#2) |
+| 🔧 Tool exists | 5 | Topographic Index (#9), UV Queries/Mirror Search (#31), Faceted/Branching Retrieval (#34), Annotation/Provenance (#39), Kintsugi Compaction (#43) |
+| 🧭 Adopted as principle | 20 | The Anchored Creature (#4), Being vs Analyzing (#26), The YES Abyss (#33), Growth Through Irritation (#45), and 16 more |
+| ⏳ Queued | 1 | Active Forgetting (#7) |
+| 💭 Open | 18 | Inverted Geode (#1), Gravitational Memory (#16), Emotional Coordinates (#20), Bell Memories (#30), and 14 more |
+
+The pattern: most keys that describe *how to think* got adopted immediately as principles. Keys that describe *what to build* are either built or waiting. The dreams found the principles faster than the tools.
+
+---
+
 ## See Also
 
 - [The Retrieval Protocol](https://github.com/StonePhilosopher/retrieval-protocol) — standalone guide to the retrieval function
+- [Dream Key Specs](dream-key-specs.md) — full archive of all 49 dream keys with implementation status
 - The diagenetic memory spec (internal) — detailed design of the consolidation model
 - The dream engine (internal) — implementation of the dreaming function
