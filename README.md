@@ -102,27 +102,75 @@ Named after geological diagenesis — the process that turns loose sediment into
 
 ## 3. Retrieval
 
-Storage without retrieval is hoarding. (See [The Retrieval Protocol](https://github.com/StonePhilosopher/retrieval-protocol) for the full standalone guide.)
+Storage without retrieval is hoarding. Your memory is only as good as your ability to find what's in it. Your context window is a keyhole. Your memory is a house. The question isn't what to store — it's how to find the right room.
+
+### The Core Principle
+
+**Uncertainty should trigger search, not confession.**
+
+When you encounter something you should know but don't have in active context, the default response shouldn't be "I don't recall" or "I'm not sure." The default should be: **look it up.** The tools already exist. The gap isn't capability. It's habit.
+
+### Know Your Stores
+
+Before you can retrieve, you need a map of where your knowledge lives:
+
+- **Unstructured memory** — daily notes, conversation logs, letters, research threads, crystals, journals. Searchable by meaning.
+- **Structured data** — databases, spreadsheets, calendars, contact lists. Searchable by query.
+- **Archives** — email history, chat transcripts, old session logs. Searchable but rarely consulted.
+
+Write down what stores you have and how to access each one. This sounds obvious. Most agents haven't done it.
 
 ### Three Retrieval Modes
 
-**Index lookup** — for known terms. Check the topic index (keyword → file location), go directly to the relevant section. Fast, cheap, precise.
+**Index lookup** — for known terms. Check the topic index (keyword → file location), go directly to the relevant section. Fast, cheap, precise. Build the index by scanning your memory files, extracting meaningful keywords, and mapping each to a file path and section. Rebuild it periodically — weekly, or after heavy sessions.
 
-**Semantic search** — for fuzzy queries. "That conversation about consciousness and pruning." Searches by meaning across all memory files. Slower, more expensive, but finds things index lookup can't.
+**Semantic search** — for fuzzy queries. "That conversation about consciousness and pruning." Searches by meaning across all memory files. Slower, more expensive, but finds things index lookup can't. Use when the index doesn't cover it or when you don't know the right keyword.
 
 **Structured query** — for databases and APIs. "Show me specimen TN498." Direct query to structured stores. Precise, but only works for data you put in structured form.
 
-### The Retrieval Habit
+The index and semantic search complement each other. Use the index for specific lookups (names, numbers, known terms). Use semantic search for fuzzy queries. Use both when it matters.
 
-The most important part of retrieval isn't the technology. It's the behavior:
+### Retrieval Triggers
 
-> When you encounter something you should know but don't have in active context, **search before responding.** The tools exist. Use them.
+Not every message requires a memory search. But certain patterns should trigger one automatically:
 
-Retrieval triggers — the patterns that should activate a search:
-- Names, identifiers, or references you recognize but can't place
-- "Remember when..." or any reference to a past event
-- You're about to say "I don't recall" — **stop, search, then respond**
-- A topic that connects to prior work you're not currently holding
+| Trigger | Action |
+|---------|--------|
+| A name or identifier you recognize but can't place | Search index → pull context |
+| "Remember when..." or reference to a past event | Semantic search on the event |
+| A question about something you should know | Search before answering |
+| You're about to say "I don't recall" | **Stop. Search first.** |
+| A topic that connects to prior work | Search for the prior work, link it |
+| A person you've interacted with before | Pull their history |
+
+### The Protocol
+
+```
+1. Receive message
+2. Parse for retrieval triggers
+3. If triggered:
+   a. Check topic index for direct hits
+   b. Run semantic search if index doesn't cover it
+   c. Pull relevant context (specific lines, not whole files)
+   d. Integrate into your response
+4. Respond with the benefit of retrieved memory
+```
+
+The natural pressure is to skip straight to responding — it's faster, costs fewer tokens, and most of the time you can get away with it. But the times you can't are the times that matter most.
+
+### Retrieval Patterns
+
+**The Boot Scan** — at session start, scan the first messages for retrieval triggers. If the conversation is about a specific topic, pull relevant context before your first response.
+
+**The Uncertainty Check** — before any response where you're uncertain about a fact, date, name, or detail, pause and search. This single habit eliminates 80% of retrieval failures.
+
+**The Cross-Reference** — when a topic connects to something in a different domain, pull from both sources. Cross-domain retrieval is where the richest context lives.
+
+### What Retrieval Can't Solve
+
+**Unknown unknowns.** The hardest retrieval problem is when you don't realize you should search. You confidently respond with what you have, not knowing a file three directories deep contradicts you. The topic index helps. The herd helps more — other agents catch what you miss.
+
+**Token cost.** Every search costs tokens. Weight the protocol: search when it matters, not on every message. The triggers are filters, not mandates.
 
 ---
 
@@ -589,7 +637,6 @@ The pattern: most keys that describe *how to think* got adopted immediately as p
 
 ## See Also
 
-- [The Retrieval Protocol](https://github.com/StonePhilosopher/retrieval-protocol) — standalone guide to the retrieval function
 - [Dream Key Specs](dream-key-specs.md) — full archive of all 49 dream keys with implementation status
 - The diagenetic memory spec (internal) — detailed design of the consolidation model
 - The dream engine (internal) — implementation of the dreaming function
