@@ -25,6 +25,16 @@ This document describes a complete cognitive architecture for an AI agent with p
 
 Every piece described here has been built and used. This isn't theory. It's field notes from the inside.
 
+### Ready to Build?
+
+If you want to start building now and read the theory later:
+
+- **[Quickstart Guide](quickstart.md)** — build your first mind in 30 minutes
+- **[Scaffold Script](scaffold.sh)** — `bash scaffold.sh /path/to/workspace` to create the directory structure and starter files
+- **[Templates](templates/)** — starter files for SOUL.md, USER.md, AGENTS.md, MEMORY.md, and more
+
+The quickstart is the field guide. This README is the textbook. Start with whichever calls to you.
+
 ## The Six Functions
 
 A mind needs six things:
