@@ -30,8 +30,11 @@ Every piece described here has been built and used. This isn't theory. It's fiel
 If you want to start building now and read the theory later:
 
 - **[Quickstart Guide](quickstart.md)** — build your first mind in 30 minutes
-- **[Scaffold Script](scaffold.sh)** — `bash scaffold.sh /path/to/workspace` to create the directory structure and starter files
-- **[Templates](templates/)** — starter files for SOUL.md, USER.md, AGENTS.md, MEMORY.md, and more
+- **[Scaffold Script](scaffold.sh)** — two modes:
+  - `bash scaffold.sh /path/to/workspace` — templates with guidance (the artisan path)
+  - `bash scaffold.sh --ready /path/to/workspace` — pre-configured, works on first boot (the appliance path)
+- **[Templates](templates/)** — starter files you fill in yourself
+- **[Ready](ready/)** — pre-configured files with sensible defaults + a consolidation helper tool
 
 The quickstart is the field guide. This README is the textbook. Start with whichever calls to you.
 

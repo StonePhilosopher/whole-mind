@@ -17,8 +17,17 @@ Clone this repo and run the scaffold script:
 ```bash
 git clone https://github.com/StonePhilosopher/whole-mind.git
 cd whole-mind
-bash scaffold.sh /path/to/your/workspace
+
+# Choose your path:
+bash scaffold.sh /path/to/your/workspace          # Templates — you fill in the blanks
+bash scaffold.sh --ready /path/to/your/workspace   # Ready — works on first boot
 ```
+
+**Two modes:**
+- **Templates** (default) — starter files with guidance comments. You make the choices. The artisan path.
+- **Ready** (`--ready`) — pre-configured files with sensible defaults, a working SOUL.md, and a consolidation helper tool. Customize later. The appliance path.
+
+Both create the same directory structure. The difference is what's inside the files. If you're not sure, use `--ready` and evolve from there.
 
 This creates your workspace structure with starter templates:
 

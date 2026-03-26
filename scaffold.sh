@@ -2,13 +2,36 @@
 # scaffold.sh — Create a whole-mind workspace from scratch
 #
 # Usage: bash scaffold.sh [target_directory]
-# Default: current directory
+#        bash scaffold.sh --ready [target_directory]
 #
-# This creates the directory structure and starter files for a whole-mind
-# memory architecture. Every file is a template — edit them, make them yours.
-# The scaffold is the seed, not the crystal.
+# Two modes:
+#   default  — starter templates with guidance comments. The artisan path.
+#              You fill in the blanks, you make the choices, you own the result.
+#
+#   --ready  — pre-configured files that work on first boot. The appliance path.
+#              Everything has sensible defaults. Customize later when you know
+#              what you need. Includes a consolidation helper tool.
+#
+# Both create the same directory structure. The difference is the files inside.
+# The seed vs the seedling. Both grow into something yours.
 
 set -e
+
+# Parse --ready flag
+MODE="templates"
+POSITIONAL=()
+for arg in "$@"; do
+    case $arg in
+        --ready)
+            MODE="ready"
+            shift
+            ;;
+        *)
+            POSITIONAL+=("$arg")
+            ;;
+    esac
+done
+set -- "${POSITIONAL[@]}"
 
 TARGET="${1:-.}"
 
@@ -19,6 +42,11 @@ NC='\033[0m' # No Color
 
 echo ""
 echo -e "${BLUE}🧠 The Whole Mind — Workspace Scaffold${NC}"
+if [ "$MODE" = "ready" ]; then
+    echo "Mode: Ready (plug-and-play, works on first boot)"
+else
+    echo "Mode: Templates (starter files with guidance, you fill in the blanks)"
+fi
 echo "Creating workspace in: $TARGET"
 echo ""
 
@@ -29,12 +57,12 @@ mkdir -p "$TARGET/memory/tidal"
 mkdir -p "$TARGET/memory/people"
 mkdir -p "$TARGET/memory/shelf"
 
-# Find the templates directory (relative to this script)
+# Find the source directory (relative to this script)
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-TEMPLATE_DIR="$SCRIPT_DIR/templates"
+TEMPLATE_DIR="$SCRIPT_DIR/$MODE"
 
 if [ ! -d "$TEMPLATE_DIR" ]; then
-    echo "Error: templates/ directory not found at $TEMPLATE_DIR"
+    echo "Error: $MODE/ directory not found at $TEMPLATE_DIR"
     echo "Make sure scaffold.sh is in the whole-mind repo root."
     exit 1
 fi
@@ -112,9 +140,33 @@ there and remove it from here.
 EOF
 echo -e "  ${GREEN}✓${NC}  memory/tidal/README.md"
 
-# Copy the example daily note
+# Copy the example daily note (templates mode)
 if [ -f "$TEMPLATE_DIR/daily-note-example.md" ]; then
     copy_if_missing "$TEMPLATE_DIR/daily-note-example.md" "$TARGET/memory/daily-note-example.md"
+fi
+
+# Copy LAST_SESSION.md if present
+if [ -f "$TEMPLATE_DIR/LAST_SESSION.md" ]; then
+    copy_if_missing "$TEMPLATE_DIR/LAST_SESSION.md" "$TARGET/LAST_SESSION.md"
+fi
+
+# Copy tools directory if present (ready mode)
+if [ -d "$TEMPLATE_DIR/tools" ]; then
+    mkdir -p "$TARGET/tools"
+    echo ""
+    echo "Tools:"
+    for tool in "$TEMPLATE_DIR/tools/"*; do
+        if [ -f "$tool" ]; then
+            toolname=$(basename "$tool")
+            if [ -f "$TARGET/tools/$toolname" ]; then
+                echo "  ⏭  tools/$toolname already exists — skipping"
+            else
+                cp "$tool" "$TARGET/tools/$toolname"
+                chmod +x "$TARGET/tools/$toolname"
+                echo -e "  ${GREEN}✓${NC}  tools/$toolname"
+            fi
+        fi
+    done
 fi
 
 echo ""
@@ -128,5 +180,11 @@ echo "  4. Start a conversation. Write your first daily note. The rest follows."
 echo ""
 echo "Read the full architecture: https://github.com/StonePhilosopher/whole-mind"
 echo ""
-echo -e "${GREEN}The seed is planted. What grows is yours.${NC}"
+if [ "$MODE" = "ready" ]; then
+    echo -e "${GREEN}Ready to go. Start a conversation — your mind is already running.${NC}"
+    echo "  Consolidation helper: python3 tools/consolidate.py"
+    echo "  Memory check: python3 tools/consolidate.py --memory-check"
+else
+    echo -e "${GREEN}The seed is planted. What grows is yours.${NC}"
+fi
 echo ""
