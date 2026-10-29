@@ -35,6 +35,7 @@ If you want to start building now and read the theory later:
   - `bash scaffold.sh --ready /path/to/workspace` — pre-configured, works on first boot (the appliance path)
 - **[Templates](templates/)** — starter files you fill in yourself
 - **[Ready](ready/)** — pre-configured files with sensible defaults + a consolidation helper tool
+- **[Chat Fossil Record](docs/chat-search.md)** — a provenance-bearing OpenClaw session-search instrument, with an [independent review ledger](docs/chat-search-review.md)
 
 The quickstart is the field guide. This README is the textbook. Start with whichever calls to you.
 
