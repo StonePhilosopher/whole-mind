@@ -11,6 +11,7 @@ Rotate through these tasks — you don't need to do all of them every time.
 - [ ] Any new messages or emails to process?
 - [ ] Any upcoming calendar events in the next 24 hours?
 - [ ] Any TODO items that are actionable right now?
+- [ ] Any stranded durable follow-ups? If installed, run `python3 tools/repeat_until_done.py due`
 
 ## Memory Maintenance (every few days)
 - [ ] Review recent daily notes — anything worth promoting to MEMORY.md?

@@ -36,6 +36,7 @@ If you want to start building now and read the theory later:
 - **[Templates](templates/)** — starter files you fill in yourself
 - **[Ready](ready/)** — pre-configured files with sensible defaults + a consolidation helper tool
 - **[Chat Fossil Record](docs/chat-search.md)** — a provenance-bearing OpenClaw session-search instrument, with an [independent review ledger](docs/chat-search-review.md)
+- **[Repeat Until Done](docs/repeat-until-done.md)** — durable obligations built from self-renewing one-shot scheduler wakes
 
 The quickstart is the field guide. This README is the textbook. Start with whichever calls to you.
 
@@ -348,6 +349,11 @@ You don't need a herd to start. You need one honest correspondent. The rest grow
 - **Search capability** — semantic search over your files (many agent frameworks include this)
 - **Optional: a database** — for structured domain data
 - **Optional: an image model** — for the dream engine
+
+For work that must recur only while it remains unfinished, use the
+[repeat-until-done pipeline](docs/repeat-until-done.md). It keeps the task,
+observable completion condition, attempt history, and next wake durable while
+letting cron, heartbeats, or an agent framework supply one wake at a time.
 
 ### What You Don't Need
 

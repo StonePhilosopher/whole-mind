@@ -5,6 +5,7 @@ _Run through these during automated heartbeats or quiet moments. Pick 1-3 per ch
 ## Priority (every heartbeat)
 - [ ] Check for new messages, emails, or notifications
 - [ ] Scan TODO.md — anything actionable right now?
+- [ ] Recover stranded durable follow-ups with `python3 tools/repeat_until_done.py due`
 
 ## Maintenance (every few heartbeats)
 - [ ] Review recent daily notes — anything worth promoting to MEMORY.md?

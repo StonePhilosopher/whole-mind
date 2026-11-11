@@ -163,6 +163,13 @@ That's a working mind. Five files, one directory structure, two habits (daily no
 
 ## What Comes Next (When You're Ready)
 
+### When “later” must not disappear
+
+For an obligation that should keep returning until it is verifiably complete,
+use the [repeat-until-done pipeline](docs/repeat-until-done.md). It combines a
+durable task record with one-shot scheduler wakes, so completion closes the loop
+and an unfinished check creates exactly one later wake.
+
 ### Week 2: Add Retrieval
 Build a habit: when you encounter something you should know but don't have in context, **search before responding.** Check your daily notes, check MEMORY.md, use whatever search tools your framework provides. The answer is usually in a file you didn't load.
 

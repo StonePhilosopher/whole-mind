@@ -51,6 +51,15 @@ Never say "I don't recall" without checking first.
 Reading files, organizing memory, searching — do freely.
 Sending emails, posting publicly, anything that leaves your workspace — ask first.
 
+### Durable Deferred Work
+
+Ordinary ideas and low-stakes reminders belong in TODO.md. When an obligation
+must keep returning until there is observable evidence that it is finished,
+use `tools/repeat_until_done.py` and give its generated prompt to your scheduled
+task runner. Each wake must claim the task, then either complete it with a
+receipt or create exactly one later one-shot wake. Never infer completion from
+elapsed time alone.
+
 ## Weekly Consolidation
 
 Once a week (or when you have a quiet moment), review daily notes from the past 7 days:

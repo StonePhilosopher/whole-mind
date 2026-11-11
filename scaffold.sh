@@ -169,6 +169,21 @@ if [ -d "$TEMPLATE_DIR/tools" ]; then
     done
 fi
 
+# Framework-neutral tools included in both scaffold modes.
+mkdir -p "$TARGET/tools"
+echo ""
+echo "Portable tools:"
+for toolname in repeat_until_done.py; do
+    tool="$SCRIPT_DIR/tools/$toolname"
+    if [ -f "$TARGET/tools/$toolname" ]; then
+        echo "  ⏭  tools/$toolname already exists — skipping"
+    else
+        cp "$tool" "$TARGET/tools/$toolname"
+        chmod +x "$TARGET/tools/$toolname"
+        echo -e "  ${GREEN}✓${NC}  tools/$toolname"
+    fi
+done
+
 echo ""
 echo -e "${BLUE}Workspace created.${NC}"
 echo ""
@@ -184,6 +199,7 @@ if [ "$MODE" = "ready" ]; then
     echo -e "${GREEN}Ready to go. Start a conversation — your mind is already running.${NC}"
     echo "  Consolidation helper: python3 tools/consolidate.py"
     echo "  Memory check: python3 tools/consolidate.py --memory-check"
+    echo "  Durable follow-ups: python3 tools/repeat_until_done.py --help"
 else
     echo -e "${GREEN}The seed is planted. What grows is yours.${NC}"
 fi
